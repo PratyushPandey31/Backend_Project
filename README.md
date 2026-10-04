@@ -22,8 +22,10 @@ Per the assignment specification, all core deliverables are provided in the repo
 | **3. SOUL.md** | [`SOUL.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/SOUL.md) | Agent persona, voice, capabilities, tools, boundary constraints & handoffs. |
 | **4. Architecture Diagram** | [`ARCHITECTURE.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/ARCHITECTURE.md) | Component architecture, sequence diagrams, and data flow. |
 | **5. Decision Log** | [`DECISIONS.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/DECISIONS.md) | Engineering trade-offs, rationale, and alternatives evaluated. |
-| **6. Performance Analysis** | [`PERFORMANCE.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/PERFORMANCE.md) | End-to-end latency benchmarks, breakdown, and 100k scaling blueprint. |
-| **7. Walkthrough Guide** | [`WALKTHROUGH.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/WALKTHROUGH.md) | 5–10 minute presentation script and live interview demo checklist. |
+| **6. Setup Instructions** | [Quick Start Guide](#-quick-start-one-command-setup) | Single command installation and cloud deployment steps. |
+| **7. Known Limitations & Dependencies** | [`LIMITATIONS.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/LIMITATIONS.md) | Transparent boundary conditions, assumptions, and package specs. |
+| **8. Performance Analysis** | [`PERFORMANCE.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/PERFORMANCE.md) | End-to-end latency benchmarks, breakdown, and 100k scaling blueprint. |
+| **9. Walkthrough Guide** | [`WALKTHROUGH.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/WALKTHROUGH.md) | 5–10 minute presentation script and live interview demo checklist. |
 
 ---
 
@@ -125,3 +127,22 @@ To guarantee flawless evaluation regardless of whether you have an API key confi
 - **Agent & Tool Activity Traces:** Audit log showing tool name, execution time in milliseconds, input JSON parameters, and raw output JSON.
 - **Attention Flag Resolution:** Review conversations flagged by the agent for negative sentiment, high-risk liquidation queries, or explicit human advisor requests.
 - **1-Click Seed Reset:** Restore database to pristine CSV seed state with one click.
+
+---
+
+## ⚠️ Known Limitations & External Dependencies
+
+### Known Limitations:
+1. **Historical Cost & Capital Appreciation:** The seed data intentionally has blank `purchase_price_inr` and lacks transaction dates. The agent refuses to hallucinate historical returns; it transparently informs the client and invites them to supply the purchase price.
+2. **Dynamic Comps:** Valuations are based on recorded client valuations (`current_estimated_value_inr`) and do not scrape live circle-rate registries.
+3. **WhatsApp Simulation:** Uses an authentic web simulation in HTML5/CSS3 rather than paying for Meta's WhatsApp Cloud API (as specified in Section 1 of the assignment).
+4. **SQLite Scalability:** Optimized for local evaluation with sub-30ms performance; enterprise 100k+ scale would migrate to PostgreSQL + PgBouncer (detailed in [`PERFORMANCE.md`](PERFORMANCE.md)).
+
+### External Dependencies:
+- **FastAPI (`>=0.115.0`)** & **Uvicorn (`>=0.30.0`)**: High-performance asynchronous REST API framework and ASGI web server.
+- **SQLAlchemy (`>=2.0.0`)**: Relational database ORM for SQLite persistence.
+- **Pydantic (`>=2.0.0`)**: Data validation and type safety.
+- **OpenAI (`>=1.50.0`)**: Client for OpenRouter dynamic model gateway (Gemini, LLaMA, GPT-4o-mini).
+- **Python-dotenv (`>=1.0.0`)**: Environment variable loader.
+- **Zero Closed-Source / Paid Dependencies**: 100% open-source, reproducible, and offline-capable.
+
