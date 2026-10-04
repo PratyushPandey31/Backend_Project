@@ -409,8 +409,30 @@ class AgentOrchestrator:
             )
             return reply, tool_traces
 
-        # 3. Hypothetical Simulation (e.g. "What if I exclude the Bandra property?", "How would that change my portfolio?")
-        elif "what if" in msg_lower or "exclude" in msg_lower or "without" in msg_lower or "hypothetical" in msg_lower:
+        # 3. Specific Exposure Query: "How much of my portfolio is retail?" / "How much is commercial?"
+        elif "how much" in msg_lower and any(w in msg_lower for w in ["retail", "commercial", "residential", "office"]):
+            t0 = time.time()
+            summary = tool_get_portfolio_summary(user_id=user_id, db=db)
+            target_class = "Retail" if "retail" in msg_lower else ("Residential" if "residential" in msg_lower else "Commercial / Office")
+            macro_data = summary.get("breakdown_by_macro_type", {}).get(target_class)
+            
+            if not macro_data or macro_data.get("count", 0) == 0:
+                reply = f"You currently have **0% exposure** to {target_class} assets in your portfolio."
+            else:
+                log_tool("get_portfolio_summary", {"user_id": user_id, "target_class": target_class}, summary, round((time.time() - t0)*1000, 2))
+                reply = (
+                    f"📊 **{target_class} Portfolio Exposure**\n\n"
+                    f"• **Allocation Share:** **{macro_data['value_share_pct']}%** of your total portfolio\n"
+                    f"• **Total Valuation:** **{macro_data['value_formatted']}** (out of {summary['total_portfolio_value_formatted']} total portfolio)\n"
+                    f"• **Properties Count:** **{macro_data['count']} unit(s)** ({macro_data['area']:,.0f} sq ft total)\n"
+                    f"• **Annual Rental Income:** **{macro_data['rent_formatted']}**\n"
+                    f"• **Asset Class Gross Yield:** **{macro_data['yield_pct']}%**\n\n"
+                    f"💡 *Strategic Insight:* {target_class} forms the predominant allocation of your portfolio wealth."
+                )
+            return reply, tool_traces
+
+        # 4. Hypothetical Simulation (e.g. "What if I exclude the Bandra property?", "How would that change my portfolio?")
+        elif any(w in msg_lower for w in ["what if", "exclude", "without", "hypothetical", "how would that change", "how does that change"]):
             t0 = time.time()
             ident = "bandra" if "bandra" in msg_lower else ("p001" if "p001" in msg_lower else "")
             if not ident:

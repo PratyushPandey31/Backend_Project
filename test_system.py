@@ -52,7 +52,17 @@ def test_full_system():
     print("Latency:", r_hyp["latency_ms"], "ms")
     assert "Hypothetical Portfolio Scenario" in r_hyp["reply"]
 
-    print("\n=== 7. TESTING ASSET EXPOSURE COMPARISON (U001) ===")
+    print("\n=== 6b. TESTING MULTI-TURN WHAT-IF FOLLOW-UP: How would that change my portfolio? ===")
+    r_hyp2 = orchestrator.process_message(user_id="U001", user_message="How would that change my portfolio?", conversation_id=conv_id)
+    print("Reply:\n", r_hyp2["reply"])
+    assert "Hypothetical Portfolio Scenario" in r_hyp2["reply"]
+
+    print("\n=== 7. TESTING SPECIFIC EXPOSURE QUERY: How much of my portfolio is retail? (U001) ===")
+    r_ret = orchestrator.process_message(user_id="U001", user_message="How much of my portfolio is retail?", conversation_id=conv_id)
+    print("Reply:\n", r_ret["reply"])
+    assert "71.38%" in r_ret["reply"] and "₹21.20 Cr" in r_ret["reply"]
+
+    print("\n=== 7b. TESTING ASSET EXPOSURE COMPARISON (U001) ===")
     r_exp = orchestrator.process_message(user_id="U001", user_message="Compare my residential and commercial exposure", conversation_id=conv_id)
     print("Reply:\n", r_exp["reply"])
 
