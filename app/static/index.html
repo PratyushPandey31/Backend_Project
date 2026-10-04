@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp - AI Real Estate Portfolio Analyst</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="wa-body">
+    <div class="wa-app-container">
+        <!-- Top Green Bar Background for WhatsApp Web look -->
+        <div class="wa-top-bar"></div>
+
+        <div class="wa-window">
+            <!-- Left Sidebar: Users & Chats -->
+            <aside class="wa-sidebar">
+                <header class="wa-sidebar-header">
+                    <div class="user-avatar-current">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <div class="sidebar-header-actions">
+                        <a href="/business" target="_blank" class="business-nav-btn" title="Open Business Admin Interface">
+                            <i class="fa-solid fa-chart-line"></i> Business Portal ↗
+                        </a>
+                        <button id="btnSettings" class="icon-btn" title="Model & API Settings">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
+                    </div>
+                </header>
+
+                <div class="wa-search-bar-wrap">
+                    <div class="wa-search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Search or start new portfolio chat..." id="searchChatInput">
+                    </div>
+                </div>
+
+                <div class="wa-chat-list-header">
+                    <span>PORTFOLIO CLIENTS</span>
+                </div>
+
+                <div class="wa-chat-list" id="userListContainer">
+                    <!-- Populated dynamically via JS -->
+                </div>
+
+                <div class="sidebar-footer-note">
+                    <small><i class="fa-solid fa-shield-halved"></i> Simulated WhatsApp Interface</small>
+                </div>
+            </aside>
+
+            <!-- Main Chat Panel -->
+            <main class="wa-main-chat">
+                <!-- Chat Header -->
+                <header class="wa-chat-header">
+                    <div class="wa-chat-header-info">
+                        <div class="avatar-analyst">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <div class="chat-header-titles">
+                            <h3 id="chatTitle">EstateIntel Analyst</h3>
+                            <span class="status-online"><i class="fa-solid fa-circle"></i> Online • AI Portfolio Specialist</span>
+                        </div>
+                    </div>
+                    <div class="wa-chat-header-controls">
+                        <div class="active-user-badge">
+                            <span class="label">Client:</span>
+                            <strong id="activeClientName">Rahul Mehta (U001)</strong>
+                        </div>
+                        <button id="btnClearChat" class="icon-btn" title="Clear Conversation">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </header>
+
+                <!-- Suggested Query Pills Bar -->
+                <div class="prompt-chips-bar" id="promptChips">
+                    <span class="chips-title">Quick Inquiries:</span>
+                    <button class="chip" data-prompt="Show me my retail properties">Retail Properties</button>
+                    <button class="chip" data-prompt="Which of my properties are above ₹10 crore?">Properties > ₹10 Cr</button>
+                    <button class="chip" data-prompt="Which property gives me the highest annual rent?">Highest Rent Asset</button>
+                    <button class="chip" data-prompt="What does my portfolio look like?">Full Portfolio Summary</button>
+                    <button class="chip" data-prompt="Compare my residential and commercial exposure">Compare Exposure</button>
+                    <button class="chip" data-prompt="What if I exclude the Bandra property?">What-If: Exclude Bandra</button>
+                    <button class="chip" data-prompt="Change my Bandra retail property value to ₹12.5 crore">Update Bandra to ₹12.5 Cr</button>
+                    <button class="chip" data-prompt="Add a 3000 sq ft retail property in Indiranagar worth ₹4.2 crore">Add Property</button>
+                    <button class="chip" data-prompt="What is my appreciation since purchase?">Historical Appreciation</button>
+                </div>
+
+                <!-- Messages Stream Window -->
+                <div class="wa-messages-container" id="messagesContainer">
+                    <!-- WhatsApp Doodle Background rendered by CSS -->
+                    <div class="wa-encryption-badge">
+                        <i class="fa-solid fa-lock"></i> Messages are simulated end-to-end for real-time portfolio advisory.
+                    </div>
+                </div>
+
+                <!-- Input Footer -->
+                <footer class="wa-chat-footer">
+                    <button class="icon-btn attach-btn" title="Simulate Attachment">
+                        <i class="fa-solid fa-paperclip"></i>
+                    </button>
+                    <div class="wa-input-box">
+                        <input type="text" id="userInput" placeholder="Ask about your properties, rental yields, what-if scenarios..." autocomplete="off">
+                    </div>
+                    <button id="btnSend" class="send-btn" title="Send Message">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </footer>
+            </main>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal-backdrop hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-sliders"></i> Engine & Gateway Settings</h3>
+                <button id="btnCloseModal" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">
+                    By default, the system runs with the <strong>Autonomous Deterministic Engine</strong> (Zero API key required, 100% offline & instantaneous).
+                    Optionally configure an OpenRouter or OpenAI API key below for live dynamic LLM routing.
+                </p>
+                <div class="form-group">
+                    <label>OpenRouter / OpenAI API Key (Optional):</label>
+                    <input type="password" id="cfgApiKey" placeholder="sk-or-v1-... or sk-...">
+                </div>
+                <div class="form-group">
+                    <label>LLM Model Selection:</label>
+                    <select id="cfgModel">
+                        <option value="google/gemini-2.5-flash">google/gemini-2.5-flash (Fast & Low Cost)</option>
+                        <option value="meta-llama/llama-3.3-70b-instruct">meta-llama/llama-3.3-70b-instruct</option>
+                        <option value="openai/gpt-4o-mini">openai/gpt-4o-mini</option>
+                        <option value="anthropic/claude-3.5-sonnet">anthropic/claude-3.5-sonnet</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnSaveSettings" class="primary-btn">Save Configuration</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

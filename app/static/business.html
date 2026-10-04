@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Observation & Control Console | EstateIntel AI</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="biz-body">
+    <div class="biz-container">
+        <!-- Top Navbar -->
+        <header class="biz-navbar">
+            <div class="biz-nav-left">
+                <div class="biz-logo">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>EstateIntel <strong>Desk</strong></span>
+                </div>
+                <span class="biz-badge">Business Observation & Control</span>
+            </div>
+            <div class="biz-nav-right">
+                <a href="/" target="_blank" class="nav-btn-outline">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp Chat ↗
+                </a>
+                <button id="btnResetDB" class="nav-btn-danger" title="Reset DB to initial seed CSV data">
+                    <i class="fa-solid fa-rotate-left"></i> Reset Seed DB
+                </button>
+            </div>
+        </header>
+
+        <!-- KPI Metrics Grid -->
+        <section class="biz-kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class="fa-solid fa-users"></i></div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Active HNWI Clients</span>
+                    <h2 id="kpiUsers">4</h2>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon icon-gold"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Total AUM Monitored</span>
+                    <h2 id="kpiAUM">₹111.50 Cr</h2>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon icon-blue"><i class="fa-solid fa-comments"></i></div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Total Conversations</span>
+                    <h2 id="kpiConvs">0</h2>
+                </div>
+            </div>
+            <div class="kpi-card card-alert">
+                <div class="kpi-icon icon-red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Requiring Attention</span>
+                    <h2 id="kpiFlagged">0</h2>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon icon-purple"><i class="fa-solid fa-bolt"></i></div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Tool Invocations</span>
+                    <h2 id="kpiTools">0</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Workspace: Master-Detail -->
+        <main class="biz-workspace">
+            <!-- Left Pane: Conversations & Clients List -->
+            <aside class="biz-sidebar-panel">
+                <div class="panel-header">
+                    <h3>Conversations & Clients</h3>
+                    <div class="filter-pills">
+                        <button class="filter-pill active" data-filter="all">All</button>
+                        <button class="filter-pill alert-pill" data-filter="flagged">Attention ⚠️</button>
+                    </div>
+                </div>
+                <div class="biz-conv-list" id="bizConvList">
+                    <!-- Loaded dynamically -->
+                </div>
+            </aside>
+
+            <!-- Right Detail Pane -->
+            <section class="biz-detail-panel">
+                <!-- Session Header Banner -->
+                <div class="detail-header" id="detailHeader">
+                    <div class="detail-title-wrap">
+                        <h2 id="currentConvTitle">Select a conversation from the sidebar</h2>
+                        <span id="currentConvUser" class="client-tag">No Client Selected</span>
+                    </div>
+                    <div class="detail-actions" id="detailActions" style="display: none;">
+                        <button id="btnResolveFlag" class="action-btn btn-success" style="display: none;">
+                            <i class="fa-solid fa-check"></i> Resolve Attention Flag
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Flag Alert Notice if present -->
+                <div id="flagNoticeBanner" class="flag-notice-banner" style="display: none;">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <div>
+                        <strong>Flagged for Attention:</strong>
+                        <span id="flagNoticeText">Reason</span>
+                    </div>
+                </div>
+
+                <!-- Tabs: Transcript vs Tool Traces vs Portfolio -->
+                <div class="biz-tabs">
+                    <button class="biz-tab active" data-tab="tabTranscript">
+                        <i class="fa-solid fa-message"></i> Conversation Transcript
+                    </button>
+                    <button class="biz-tab" data-tab="tabTraces">
+                        <i class="fa-solid fa-network-wired"></i> Agent & Tool Traces <span id="traceCountBadge" class="tab-badge">0</span>
+                    </button>
+                    <button class="biz-tab" data-tab="tabPortfolio">
+                        <i class="fa-solid fa-building"></i> Live Portfolio Snapshot
+                    </button>
+                </div>
+
+                <!-- Tab Contents -->
+                <div class="biz-tab-content active" id="tabTranscript">
+                    <div class="transcript-messages" id="transcriptMessages">
+                        <p class="placeholder-text">Select a conversation to inspect message exchange.</p>
+                    </div>
+                </div>
+
+                <div class="biz-tab-content" id="tabTraces">
+                    <div class="traces-table-wrap">
+                        <table class="traces-table">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Tool Name</th>
+                                    <th>Execution Time</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tracesTableBody">
+                                <tr><td colspan="5" class="placeholder-text">No tool traces available for this session.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Trace Detail Modal / View Area -->
+                    <div id="traceDetailViewer" class="trace-detail-viewer" style="display: none;">
+                        <h4>Trace Inspector: <span id="traceToolTitle"></span></h4>
+                        <div class="trace-json-grid">
+                            <div>
+                                <label>Input Arguments:</label>
+                                <pre id="traceInputJson"></pre>
+                            </div>
+                            <div>
+                                <label>Tool Output:</label>
+                                <pre id="traceOutputJson"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="biz-tab-content" id="tabPortfolio">
+                    <div id="clientPortfolioView">
+                        <p class="placeholder-text">Select a conversation to view the client's current portfolio assets.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/business.js"></script>
+</body>
+</html>
