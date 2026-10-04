@@ -1,5 +1,6 @@
 # EstateIntel — AI Real Estate Portfolio Analyst
 
+[![CI Test Suite](https://github.com/PratyushPandey31/Backend_Project/actions/workflows/ci.yml/badge.svg)](https://github.com/PratyushPandey31/Backend_Project/actions)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg?style=flat&logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com)
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB.svg?style=flat&logo=Python&logoColor=white)](https://www.python.org/)
 [![SQLite](https://img.shields.io/badge/Database-SQLite-003B57.svg?style=flat&logo=SQLite&logoColor=white)](https://www.sqlite.org/)
@@ -17,12 +18,12 @@ Per the assignment specification, all core deliverables are provided in the repo
 | Deliverable | File Link | Description |
 | :--- | :--- | :--- |
 | **1. Live Interactive Tool** | [WhatsApp UI (`/`)](http://127.0.0.1:8000) & [Business Console (`/business`)](http://127.0.0.1:8000/business) | Fully working web application with client chat & business monitoring. |
-| **2. GitHub Repository** | [Repository Source Code](.) | Complete clean code with zero hidden dependencies. |
-| **3. SOUL.md** | [`SOUL.md`](file:///d:/Backend/SOUL.md) | Agent persona, voice, capabilities, tools, boundary constraints & handoffs. |
-| **4. Architecture Diagram** | [`ARCHITECTURE.md`](file:///d:/Backend/ARCHITECTURE.md) | Component architecture, sequence diagrams, and data flow. |
-| **5. Decision Log** | [`DECISIONS.md`](file:///d:/Backend/DECISIONS.md) | Engineering trade-offs, rationale, and alternatives evaluated. |
-| **6. Performance Analysis** | [`PERFORMANCE.md`](file:///d:/Backend/PERFORMANCE.md) | End-to-end latency benchmarks, breakdown, and 100k scaling blueprint. |
-| **7. Walkthrough Guide** | [`WALKTHROUGH.md`](file:///d:/Backend/WALKTHROUGH.md) | 5–10 minute presentation script and live interview demo checklist. |
+| **2. GitHub Repository** | [PratyushPandey31/Backend_Project](https://github.com/PratyushPandey31/Backend_Project) | Complete clean code with zero hidden dependencies. |
+| **3. SOUL.md** | [`SOUL.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/SOUL.md) | Agent persona, voice, capabilities, tools, boundary constraints & handoffs. |
+| **4. Architecture Diagram** | [`ARCHITECTURE.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/ARCHITECTURE.md) | Component architecture, sequence diagrams, and data flow. |
+| **5. Decision Log** | [`DECISIONS.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/DECISIONS.md) | Engineering trade-offs, rationale, and alternatives evaluated. |
+| **6. Performance Analysis** | [`PERFORMANCE.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/PERFORMANCE.md) | End-to-end latency benchmarks, breakdown, and 100k scaling blueprint. |
+| **7. Walkthrough Guide** | [`WALKTHROUGH.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/WALKTHROUGH.md) | 5–10 minute presentation script and live interview demo checklist. |
 
 ---
 
