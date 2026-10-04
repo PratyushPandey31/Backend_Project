@@ -1,6 +1,7 @@
 # EstateIntel — AI Real Estate Portfolio Analyst
 
 [![CI Test Suite](https://github.com/PratyushPandey31/Backend_Project/actions/workflows/ci.yml/badge.svg)](https://github.com/PratyushPandey31/Backend_Project/actions)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/PratyushPandey31/Backend_Project)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg?style=flat&logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com)
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB.svg?style=flat&logo=Python&logoColor=white)](https://www.python.org/)
 [![SQLite](https://img.shields.io/badge/Database-SQLite-003B57.svg?style=flat&logo=SQLite&logoColor=white)](https://www.sqlite.org/)
