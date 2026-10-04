@@ -26,7 +26,7 @@ Per the assignment specification, all core deliverables are provided in the repo
 | **6. Setup Instructions** | [Quick Start Guide](#-quick-start-one-command-setup) | Single command installation and cloud deployment steps. |
 | **7. Known Limitations & Dependencies** | [`LIMITATIONS.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/LIMITATIONS.md) | Transparent boundary conditions, assumptions, and package specs. |
 | **8. Performance Analysis** | [`PERFORMANCE.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/PERFORMANCE.md) | End-to-end latency benchmarks, breakdown, and 100k scaling blueprint. |
-| **9. Walkthrough Guide** | [`WALKTHROUGH.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/WALKTHROUGH.md) | 5–10 minute presentation script and live interview demo checklist. |
+| **9. Walkthrough Guide & Video** | [`WALKTHROUGH.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/WALKTHROUGH.md) & [📹 Video Demo](https://github.com/PratyushPandey31/Backend_Project/blob/main/docs/walkthrough_demo.webm?raw=true) | 5–10 min presentation script and complete recorded walkthrough video. |
 
 ---
 

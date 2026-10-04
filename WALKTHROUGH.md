@@ -1,5 +1,8 @@
 # 5–10 Minute Presentation Walkthrough Script
 
+> 📹 **Recorded Video Demo**: [`docs/walkthrough_demo.webm`](https://github.com/PratyushPandey31/Backend_Project/blob/main/docs/walkthrough_demo.webm?raw=true)  
+> Direct Video Link: [Watch / Download Video](https://github.com/PratyushPandey31/Backend_Project/raw/main/docs/walkthrough_demo.webm)
+
 Use this structured walkthrough to demonstrate the **AI Real Estate Portfolio Analyst** during your interview presentation.
 
 ---
