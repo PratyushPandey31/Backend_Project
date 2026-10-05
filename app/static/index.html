@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>WhatsApp - AI Real Estate Portfolio Analyst</title>
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -25,6 +25,9 @@
                         </a>
                         <button id="btnSettings" class="icon-btn" title="Model & API Settings">
                             <i class="fa-solid fa-gear"></i>
+                        </button>
+                        <button id="btnMobileCloseSidebar" class="icon-btn mobile-close-sidebar-btn" title="View Active Chat">
+                            <i class="fa-solid fa-comment-dots"></i>
                         </button>
                     </div>
                 </header>
@@ -54,6 +57,9 @@
                 <!-- Chat Header -->
                 <header class="wa-chat-header">
                     <div class="wa-chat-header-info">
+                        <button id="btnMobileBack" class="icon-btn mobile-back-btn" title="Back to Contacts">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
                         <div class="avatar-analyst">
                             <i class="fa-solid fa-building-columns"></i>
                         </div>

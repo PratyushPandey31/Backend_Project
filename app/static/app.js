@@ -13,6 +13,9 @@ const userInput = document.getElementById("userInput");
 const btnSend = document.getElementById("btnSend");
 const btnClearChat = document.getElementById("btnClearChat");
 const promptChips = document.getElementById("promptChips");
+const btnMobileBack = document.getElementById("btnMobileBack");
+const btnMobileCloseSidebar = document.getElementById("btnMobileCloseSidebar");
+const waWindow = document.querySelector(".wa-window");
 
 // Settings Modal Elements
 const btnSettings = document.getElementById("btnSettings");
@@ -73,6 +76,18 @@ function setupEventListeners() {
         settingsModal.classList.add("hidden");
         alert("Settings saved successfully!");
     });
+
+    // Mobile Navigation Controls
+    if (btnMobileBack && waWindow) {
+        btnMobileBack.addEventListener("click", () => {
+            waWindow.classList.add("mobile-show-sidebar");
+        });
+    }
+    if (btnMobileCloseSidebar && waWindow) {
+        btnMobileCloseSidebar.addEventListener("click", () => {
+            waWindow.classList.remove("mobile-show-sidebar");
+        });
+    }
 }
 
 async function fetchUsers() {
@@ -129,6 +144,11 @@ function selectUser(user) {
     `;
 
     sendInitialGreeting();
+    
+    // On mobile screens, automatically show the chat window
+    if (waWindow) {
+        waWindow.classList.remove("mobile-show-sidebar");
+    }
 }
 
 function sendInitialGreeting() {
