@@ -23,6 +23,9 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+# Eagerly ensure DB tables and CSV seeds exist for serverless environments (e.g. Vercel)
+seed_database_if_empty()
+
 # CORS
 app.add_middleware(
     CORSMiddleware,
