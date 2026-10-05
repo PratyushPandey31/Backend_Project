@@ -18,7 +18,7 @@ Per the assignment specification, all core deliverables are provided in the repo
 
 | Deliverable | File Link | Description |
 | :--- | :--- | :--- |
-| **1. Live Interactive Tool** | [WhatsApp UI (`/`)](http://127.0.0.1:8000) & [Business Console (`/business`)](http://127.0.0.1:8000/business) | Fully working web application with client chat & business monitoring. |
+| **1. Live Interactive Tool** | [WhatsApp UI (`/`)](https://estateintel-analyst.vercel.app) & [Business Console (`/business`)](https://estateintel-analyst.vercel.app/business) | Fully working web application deployed on Vercel with mobile fit-in layout. |
 | **2. GitHub Repository** | [PratyushPandey31/Backend_Project](https://github.com/PratyushPandey31/Backend_Project) | Complete clean code with zero hidden dependencies. |
 | **3. SOUL.md** | [`SOUL.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/SOUL.md) | Agent persona, voice, capabilities, tools, boundary constraints & handoffs. |
 | **4. Architecture Diagram** | [`ARCHITECTURE.md`](https://github.com/PratyushPandey31/Backend_Project/blob/main/ARCHITECTURE.md) | Component architecture, sequence diagrams, and data flow. |
