@@ -4,9 +4,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Detect if running on Vercel
+IS_VERCEL = os.getenv("VERCEL") == "1" or os.getenv("VERCEL_ENV") is not None
+
 class Settings(BaseModel):
     PROJECT_NAME: str = "AI Real Estate Portfolio Analyst"
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./portfolio.db")
+    # On Vercel, use /tmp (ephemeral writable dir). Locally use ./portfolio.db
+    DATABASE_URL: str = os.getenv(
+        "DATABASE_URL",
+        "sqlite:////tmp/portfolio.db" if IS_VERCEL else "sqlite:///./portfolio.db"
+    )
     
     # Model Gateway & API Keys
     OPENROUTER_API_KEY: str = os.getenv("OPENROUTER_API_KEY", "")

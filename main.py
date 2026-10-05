@@ -49,5 +49,7 @@ async def serve_whatsapp_ui():
 async def serve_business_ui():
     return FileResponse(os.path.join(static_dir, "business.html"))
 
+# Vercel requires the app object to be named 'app' at module level (already done)
+# For local dev only:
 if __name__ == "__main__":
     uvicorn.run("main:app", host=settings.HOST, port=settings.PORT, reload=True)
